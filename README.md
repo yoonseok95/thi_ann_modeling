@@ -27,7 +27,7 @@ df = pd.read_excel("C:/Users/MOON/Desktop/2024 바이오소재공학연구실/�
 DataFrame = df.drop(columns = ['소구분'], axis = 1)  
 DataFrame.head()
 
-![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/92e5f84a-4f0a-48bf-bfd3-b8745db788ac)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/669fddd1-4601-4288-82fb-f272d888b452)  
 > 결과로 table을 얻을 수 있다.
 - - -  
 
@@ -35,7 +35,7 @@ DataFrame.head()
 des_df = round(DataFram.descriev(), 4)  
 des_df  
 
-![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/af51c2ab-8a34-45b3-9895-dca3e114e3a7)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/59610206-62bc-492c-bde2-1ef5f736dc57)  
 > 결과로 table을 얻을 수 있다.
 - - - 
 
@@ -147,7 +147,7 @@ plt.figure(figsize = (14,10))
 sns.heatmap(nor_df.corr(), annot = True)
 
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/949fe00f-98b6-4b0c-a81f-f89873617e6c)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/078a580c-3bd4-49d6-aafb-fa7c70387785)  
 > 결과로 이런 이미지를 확인할 수 있다.  
 - - -  
 
