@@ -110,7 +110,8 @@ round(data_de.describe(), 4)
 > 
 > #output file
 > 결과로 table을 얻을 수 있다.
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/c6caa8f0-054a-4603-a5e4-eb097c06e8fe)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/54a7b236-d567-41af-bc4c-1ed41021d1db)  
+
 - - -  
 
 ### 이상치 제거 데이터  
@@ -121,7 +122,7 @@ DataFram_ou = df_1.drop(columns = ['소구분'], axis = 1)
 des_df_ou = round(DataFram_ou.describe(), 4)  
 des_df_ou
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/a8e43b03-cc87-40c0-a26a-ec50f61313cc)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/47563400-dfb5-4b87-8bed-ae9b87729d15)  
 > 결과로 table을 얻을 수 있다.  
 - - -  
  
@@ -137,7 +138,7 @@ nor_df.drop('유량', axis = 1, inplce = True)
 nor_df['유량'] = y_unnormalized  
 print(nor_of.describe())
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/2ad9b983-d556-47c5-9c92-3a523ef50945)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/368f8d83-5fc0-4088-ae2b-5975f778de62)  
 > 결과로 table을 얻을 수 있다.
 
 - - -  
@@ -164,7 +165,8 @@ vif['VIF Score'] = [variance_inflation_factor(matrix_x,i) for i in range(matrix_
 
 print(vif) 
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/ea80611e-539e-44d7-bc4b-eef7a5c6619d)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/3c1a0999-dabd-4728-a624-29e4dbeadf4c)  
+
 > 결과로 table을 얻을 수 있다.
 - - -  
 
@@ -175,7 +177,8 @@ x = df_na.drop(columns = ['유량', '온도', '피부온도', '음수섭취량']
 y = df_na[['유량']]
 
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/ccc49e9a-71c3-4024-94c7-86a0de74167f)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/0593b604-802c-447e-be28-8b313feef7a1)  
+
 > 결과로 table을 얻을 수 있다.
 - - - 
 
@@ -187,7 +190,8 @@ x_1 = df_na_1.drop(columns = ['유량'], axis = 1)
 y_1 = df_na_1[['유량']]  
 print(df_na_1.describe())  
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/2f08e3e3-73f2-4366-9ab6-19a08989fb5e)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/19c7904f-7b37-4360-9fe1-8761374098bf)  
+
 > 결과로 table을 얻을 수 있다.  
 - - -  
 
@@ -196,7 +200,8 @@ x_2 = df_na_1.drop(columns = ['유량', '사료섭취량'])
 y_2 = df_na_1[['유량']]  
 print(x_2.describe())
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/14766926-4556-40b2-833c-0f1c9eb3049f)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/10274329-1234-418c-bbcf-829f39eddce2)  
+
 > 결과로 table을 얻을 수 있다.  
 - - -  
 
@@ -208,7 +213,8 @@ x_3 = df_na_2.drop(columns = ['유량'], axis = 1)
 y_3 = df_na_2[['유량']]  
 print(df_na_2.describe())
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/51c65dfe-3d3e-4b5d-ac78-2fb49d2e1219)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/a8c6bb9b-3265-48b7-a421-d0aa94d7b8c8)  
+
 > 결과로 table을 얻을 수 있다. 
 - - -  
 
@@ -219,7 +225,8 @@ x_4 = df_na_3[['THI']]
 y_4 = df_na_3[['유량']]  
 print(df_na_3.describe())  
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/c9d82e3a-89c6-4405-925a-bde50789fd03)    
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/04c9d2e9-861c-4cea-9511-b7a22256a1c5)  
+   
 > 결과로 table을 얻을 수 있다.
 - - -  
 
