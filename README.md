@@ -27,7 +27,7 @@ df = pd.read_excel("C:/Users/MOON/Desktop/2024 바이오소재공학연구실/�
 DataFrame = df.drop(columns = ['소구분'], axis = 1)  
 DataFrame.head()
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/92e5f84a-4f0a-48bf-bfd3-b8745db788ac)  
+![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/92e5f84a-4f0a-48bf-bfd3-b8745db788ac)  
 > 결과로 table을 얻을 수 있다.
 - - -  
 
@@ -35,7 +35,7 @@ DataFrame.head()
 des_df = round(DataFram.descriev(), 4)  
 des_df  
 
-> ![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/af51c2ab-8a34-45b3-9895-dca3e114e3a7)  
+![image](https://github.com/chaenmoon02/methane_ANN_madeling/assets/145320578/af51c2ab-8a34-45b3-9895-dca3e114e3a7)  
 > 결과로 table을 얻을 수 있다.
 - - - 
 
