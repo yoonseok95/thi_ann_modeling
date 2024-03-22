@@ -1,7 +1,7 @@
-# THI_ANN_modeling
+# THI_ANN_modeling  
 
-### libraries
-import pandas as pd  
+### libraries  
+import pandas as pd   
 import numpy as np  
 import seaborn as sns  
 import matplotlib.pyplot as plt  
@@ -22,24 +22,24 @@ warnings.filterwarnings("ignore)
 plt.rc("font", family = "Malgun Gothic")  
 sns.set(font="Malgon Gothic", rc={"axes.unicodde_minus":False}, style='white')   
 
-### data
+### data  
 df = pd.read_excel("C:/Users/MOON/Desktop/2024 바이오소재공학연구실/모델식 데이터.xlsx")  
 DataFrame = df.drop(columns = ['소구분'], axis = 1)  
-DataFrame.head()
+DataFrame.head()  
 
 ![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/669fddd1-4601-4288-82fb-f272d888b452)  
-> 결과로 table을 얻을 수 있다.
+> 결과로 table을 얻을 수 있다.  
 - - -  
 
-# 기술통계량 확인(df)
-des_df = round(DataFrame.descriev(), 4)  
-des_df  
+### 기술통계량 확인(df)  
+des_df = round(DataFrame.descriev(), 4)    
+des_df   
 
 ![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/59610206-62bc-492c-bde2-1ef5f736dc57)  
-> 결과로 table을 얻을 수 있다.
+> 결과로 table을 얻을 수 있다.  
 - - -  
 
-# 이상치 제거    
+### 이상치 제거    
 DataFrame_1 = DataFrame[['피부온도']].dropna(axis = 0)  
 print(DataFrame_1)  
 def remove_outliers_iqr(data, column_name, threshold=):  
@@ -48,7 +48,7 @@ def remove_outliers_iqr(data, column_name, threshold=):
     IQR = Q3 - Q1 # IQR 계산  
 
 #*이상치를 탐지하여 제거하는 과정*    
-    lower_bound = Q1 - threshold * IQR  
+    lower_bound = Q1 - threshold * IQR   
     upper_bound = Q3 + threshold * IQR   
     outlier_indices = data[(data[column_name] < lower_bound) | (data[column_name] ` upper_bound)].index  
     data = data[(data[column_name] >= lower_bound) & (data[column_name] <= upper_bound)]  
@@ -73,13 +73,13 @@ print(Outlier_indices)
 - - -  
 
 ### DataFram에서 종속 변수 열 선택  
-dependent_variable = DataFram['유량']  
+dependent_variable = DataFram['유량']   
 
 #*이상치 제거 기준 설정 (예: Z-score를 사용한 방법)*  
 z_scores = np.abs((dependent_variable - dependent_variable.mean()) / dependent_variable.std())  
 z_scores = np.abs((dependent_variable - dependent_variable.mean()) / dependent_variable.std())  
-threshold = 3 *임계값 설정*  
-print(z_scores)  
+threshold = 3 *임계값 설정*   
+print(z_scores)   
 
 #*이상치의 인덱스 확인*  
 outlier_indices = z_scores[z_scores > threshold].index   
@@ -107,14 +107,13 @@ round(data_de.describe(), 4)
 > Name: 유량, Length: 364, dtype: float64  
 > 이상치의 인덱스: Int64Index([8, 25], dtype='int64')  
 > 
-> #output file
-> 결과로 table을 얻을 수 있다.
-![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/54a7b236-d567-41af-bc4c-1ed41021d1db)  
+> #output file  
+> 결과로 table을 얻을 수 있다.  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/54a7b236-d567-41af-bc4c-1ed41021d1db)    
 
 - - -  
 
 ### 이상치 제거 데이터  
-
 df_1 = pd.read_excel("C:/Users/MOON/Desktop/2024 바이오소재공학연구실/모델식 데이터.xlsx")  
 DataFram_ou = df_1.drop(columns = ['소구분'], axis = 1)  
 #*기술통계량 확인*  
@@ -129,24 +128,23 @@ des_df_ou
 nor_df = (DataFrame_ou - DataFram_ou.min()) / (DataFrame_ou.max() - DataFram)ou.min())  
 print(nor_df.describe())  
 #*Undo normalization for y value*  
-y_unnormalized = nor_df['유량'] * (DataFrame_ou['유량'].max() - DataFram_ou['유량'].min()) + DataFram_ou['유량'].min()  
+y_unnormalized = nor_df['유량'] * (DataFrame_ou['유량'].max() - DataFram_ou['유량'].min()) + DataFram_ou['유량'].min()   
 #*Remove flow column from nor_df*  
 nor_df.drop('유량', axis = 1, inplce = True)  
 #*Add y_unnormalized column to nor_df*  
 nor_df['유량'] = y_unnormalized  
-print(nor_of.describe())
+print(nor_of.describe())  
 
 ![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/368f8d83-5fc0-4088-ae2b-5975f778de62)  
-> 결과로 table을 얻을 수 있다.
+> 결과로 table을 얻을 수 있다.  
 
 - - -  
 
 ### 변수간 Correlation 확인 (결측치 제거 이후)  
 plt.figure(figsize = (14,10))  
-sns.heatmap(nor_df.corr(), annot = True)
+sns.heatmap(nor_df.corr(), annot = True)  
 
-
-![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/078a580c-3bd4-49d6-aafb-fa7c70387785)  
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/078a580c-3bd4-49d6-aafb-fa7c70387785)   
 > 결과로 이런 이미지를 확인할 수 있다.  
 - - -  
 
@@ -166,41 +164,40 @@ print(vif)
 ![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/0439e7fa-b0a9-48d6-bea4-022d17ebd508)  
 
 
-> 결과로 table을 얻을 수 있다.
+> 결과로 table을 얻을 수 있다.  
 - - -  
 
 ### 변수 구분  
-x = nor_df.drop(columns = ['유량','온도','피부온도','음수섭취량'], axis =1)  
-x = x.dropna(axis=0).reset_index(drop=True)  
+x = nor_df.drop(columns = ['유량','온도','피부온도','음수섭취량'], axis =1)    
+x = x.dropna(axis=0).reset_index(drop=True)   
 y = nor_df[['유량']]  
 #*독립변수 행렬 생성*   
 matrix_x = np.array(x)  
 #*VIF 점수 계산*  
 vif = pd.DataFrame()  
-vif['Features'] = x.columns  
-vif['VIF Score'] = [variance_inflation_factor(matrix_x,i) for i in range(matrix_x.shape[1])]  
+vif['Features'] = x.columns   
+vif['VIF Score'] = [variance_inflation_factor(matrix_x,i) for i in range(matrix_x.shape[1])]   
 
 print(vif)  
 
 ![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/e70abb88-7e52-4999-a1c0-97fd51bb03df)  
 
-> 결과로 table을 얻을 수 있다.
+> 결과로 table을 얻을 수 있다.  
 - - -  
 
 ### 결측치 제거 (DIM, 직장온도 포함)  
 df_na = nor_df.dropna(axis=0).reset_index(drop=True)  
 print(df_na.describe())  
 x = df_na.drop(columns = ['유량', '온도', '피부온도', '음수섭취량'], axis = 1)  
-y = df_na[['유량']]
+y = df_na[['유량']]  
 
+![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/0593b604-802c-447e-be28-8b313feef7a1)    
 
-![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/0593b604-802c-447e-be28-8b313feef7a1)  
-
-> 결과로 table을 얻을 수 있다.
+> 결과로 table을 얻을 수 있다.  
 - - - 
 
 ### 결측치 제거 (직장온도 포함,변수 3개)  
-df_drop = nor_df.drop(columns = ['DIM', '음수섭취량', '온도','피부온도'])  
+df_drop = nor_df.drop(columns = ['DIM', '음수섭취량', '온도','피부온도'])   
 print(df_drop.head())  
 df_na_1 = df_drop.dropna(axis=0).reset_index(drop=True)  
 x_1 = df_na_1.drop(columns = ['유량'], axis = 1)  
@@ -212,7 +209,7 @@ print(df_na_1.describe())
 > 결과로 table을 얻을 수 있다.  
 - - -  
 
-### 결측치 제거 (직장온도 포함, 변수 2개)
+### 결측치 제거 (직장온도 포함, 변수 2개)  
 x_2 = df_na_1.drop(columns = ['유량', '사료섭취량'])  
 y_2 = df_na_1[['유량']]  
 print(x_2.describe())
@@ -228,11 +225,11 @@ print(df_drop_1.head())
 df_na_2 = df_drop_1.dropna(axis=0).reset_index(drop=True)  
 x_3 = df_na_2.drop(columns = ['유량'], axis = 1)  
 y_3 = df_na_2[['유량']]  
-print(df_na_2.describe())
+print(df_na_2.describe())  
 
 ![image](https://github.com/yoonseok95/thi_ann_modeling/assets/145320578/a8c6bb9b-3265-48b7-a421-d0aa94d7b8c8)  
 
-> 결과로 table을 얻을 수 있다. 
+> 결과로 table을 얻을 수 있다.  
 - - -  
 
 ### 결측치 제거 (THI)   
@@ -432,7 +429,7 @@ layer is {best_hps.get('units')} and the optimal number of layers is {best_hps.g
 > 확인할 수 있습니다.  
 - - -  
  
-### layer 별 노드개수(model1)  
+### layer 별 노드개수(model 1)  
 print("layer 1:", best_hps.get('units_0'), "layer 2", best_hps.get("units_1"), "layer 3", best_hps.get("units_2"),   
       "layer 4", best_hps.get("units_3"), "layer 5", best_hps.get("units_4"))
 
@@ -658,7 +655,7 @@ layer is {best_hps_3.get('units')} and the optimal number of layers is {best_hps
 """)  
 - - -  
 
-### layer 별 노드개수(model1)   
+### layer 별 노드개수(model 1)   
 print("layer 1:", best_hps_3.get('units_0'), "layer 2", best_hps_3.get("units_1"), "layer 3", best_hps_3.get("units_2"),  
       "layer 4", best_hps_3.get("units_3"))  
 
@@ -758,7 +755,7 @@ tuner4 = kt.RandomSearch(
 
 tuner4.search(x_train_4, y_train_4, epochs=10, validation_data=(x_test_4, y_test_4))  
 
-# Get the optimal hyperparameters    
+### Get the optimal hyperparameters    
 best_hps_4 = tuner4.get_best_hyperparameters(num_trials=1)[0]  
 
 print(f"""  
